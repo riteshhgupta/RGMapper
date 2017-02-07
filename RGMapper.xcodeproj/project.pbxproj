@@ -12,6 +12,12 @@
 		3D24F3A71E436C2C0068392B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D24F3A51E436C2C0068392B /* Main.storyboard */; };
 		3D24F3A91E436C2C0068392B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D24F3A81E436C2C0068392B /* Assets.xcassets */; };
 		3D24F3AC1E436C2C0068392B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D24F3AA1E436C2C0068392B /* LaunchScreen.storyboard */; };
+		3D3430DE1E4F87F200F1AA0D /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430D81E4F87F200F1AA0D /* Operators.swift */; };
+		3D3430DF1E4F87F200F1AA0D /* TypeConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430D91E4F87F200F1AA0D /* TypeConvertible.swift */; };
+		3D3430E01E4F87F200F1AA0D /* Defaultable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DA1E4F87F200F1AA0D /* Defaultable.swift */; };
+		3D3430E11E4F87F200F1AA0D /* MappableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DB1E4F87F200F1AA0D /* MappableError.swift */; };
+		3D3430E21E4F87F200F1AA0D /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DC1E4F87F200F1AA0D /* Mappable.swift */; };
+		3D3430E31E4F87F200F1AA0D /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DD1E4F87F200F1AA0D /* Foundation+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		3D24F3A81E436C2C0068392B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D24F3AB1E436C2C0068392B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D24F3AD1E436C2C0068392B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D3430D81E4F87F200F1AA0D /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		3D3430D91E4F87F200F1AA0D /* TypeConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeConvertible.swift; sourceTree = "<group>"; };
+		3D3430DA1E4F87F200F1AA0D /* Defaultable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaultable.swift; sourceTree = "<group>"; };
+		3D3430DB1E4F87F200F1AA0D /* MappableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableError.swift; sourceTree = "<group>"; };
+		3D3430DC1E4F87F200F1AA0D /* Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
+		3D3430DD1E4F87F200F1AA0D /* Foundation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,10 +50,12 @@
 		3D24F3951E436C2C0068392B = {
 			isa = PBXGroup;
 			children = (
+				3D24F3B41E436CFF0068392B /* Source */,
 				3D24F3A01E436C2C0068392B /* RGMapper */,
 				3D24F39F1E436C2C0068392B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		3D24F39F1E436C2C0068392B /* Products */ = {
 			isa = PBXGroup;
@@ -61,6 +75,20 @@
 				3D24F3AA1E436C2C0068392B /* LaunchScreen.storyboard */,
 				3D24F3AD1E436C2C0068392B /* Info.plist */,
 			);
+			path = RGMapper;
+			sourceTree = "<group>";
+		};
+		3D24F3B41E436CFF0068392B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3D3430D81E4F87F200F1AA0D /* Operators.swift */,
+				3D3430D91E4F87F200F1AA0D /* TypeConvertible.swift */,
+				3D3430DA1E4F87F200F1AA0D /* Defaultable.swift */,
+				3D3430DB1E4F87F200F1AA0D /* MappableError.swift */,
+				3D3430DC1E4F87F200F1AA0D /* Mappable.swift */,
+				3D3430DD1E4F87F200F1AA0D /* Foundation+Extension.swift */,
+			);
+			name = Source;
 			path = RGMapper;
 			sourceTree = "<group>";
 		};
@@ -137,8 +165,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D3430E11E4F87F200F1AA0D /* MappableError.swift in Sources */,
+				3D3430E21E4F87F200F1AA0D /* Mappable.swift in Sources */,
 				3D24F3A41E436C2C0068392B /* ViewController.swift in Sources */,
 				3D24F3A21E436C2C0068392B /* AppDelegate.swift in Sources */,
+				3D3430E31E4F87F200F1AA0D /* Foundation+Extension.swift in Sources */,
+				3D3430DE1E4F87F200F1AA0D /* Operators.swift in Sources */,
+				3D3430DF1E4F87F200F1AA0D /* TypeConvertible.swift in Sources */,
+				3D3430E01E4F87F200F1AA0D /* Defaultable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +334,7 @@
 				3D24F3B21E436C2C0068392B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
