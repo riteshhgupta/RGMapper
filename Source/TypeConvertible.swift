@@ -29,3 +29,7 @@ extension Float: TypeConvertible {}
 extension Double: TypeConvertible {}
 
 extension Bool: TypeConvertible {}
+
+extension NSString: TypeConvertible {}
+
+extension NSNumber : TypeConvertible {}
