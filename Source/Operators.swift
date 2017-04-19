@@ -49,14 +49,13 @@ public postfix func << <T>(_ value: Any?) throws -> T {
 postfix operator |^
 
 public postfix func |^ <T: Mappable>(_ value: Any?) throws -> [T] {
-	guard let list = value as? [[String: Mappable]] else { throw MappableError.unableToParse(value) }
+	guard let list = value as? [[String: Any]] else { throw MappableError.unableToParse(value) }
 	return try list.map { try T.map($0) }
 }
 
 postfix operator |~
 
 public postfix func |~ <T: Mappable>(_ value: Any?) -> [T] {
-	guard let list = value as? [[String: Mappable]] else { return [] }
+	guard let list = value as? [[String: Any]] else { return [] }
 	return list.flatMap { try? T.map($0) }
 }
-
