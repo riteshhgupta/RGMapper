@@ -49,6 +49,24 @@ extension Int: Mappable {
 	}
 }
 
+extension Int32: Mappable {
+	
+	public static func map(_ value: Any?) throws -> Int32 {
+		guard let convertible = value as? TypeConvertible else { throw MappableError.typeMismatch(value) }
+		guard let mapped = Int32(optional: convertible) else { throw MappableError.typeMismatch(value) }
+		return mapped
+	}
+}
+
+extension Int64: Mappable {
+	
+	public static func map(_ value: Any?) throws -> Int64 {
+		guard let convertible = value as? TypeConvertible else { throw MappableError.typeMismatch(value) }
+		guard let mapped = Int64(optional: convertible) else { throw MappableError.typeMismatch(value) }
+		return mapped
+	}
+}
+
 extension Float: Mappable {
 	
 	public static func map(_ value: Any?) throws -> Float {

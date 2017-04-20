@@ -24,6 +24,10 @@ extension String: TypeConvertible {}
 
 extension Int: TypeConvertible {}
 
+extension Int32: TypeConvertible {}
+
+extension Int64: TypeConvertible {}
+
 extension Float: TypeConvertible {}
 
 extension Double: TypeConvertible {}

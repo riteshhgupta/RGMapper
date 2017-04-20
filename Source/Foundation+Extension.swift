@@ -19,7 +19,7 @@ extension String {
 		case is Int: self.init(convertible.to() as Int)
 		default: return nil
 		}
-	}	
+	}
 	
 	var bool: Bool? {
 		guard let int = Int(optional: self) else { return nil }
@@ -61,6 +61,8 @@ extension Int {
 		guard let convertible = optional as? TypeConvertible else { return nil }
 		switch convertible {
 		case is Int: self.init(convertible.to() as Int)
+		case is Int32: self.init(convertible.to() as Int)
+		case is Int64: self.init(convertible.to() as Int)
 		case is Double: self.init(convertible.to() as Double)
 		case is Float: self.init(convertible.to() as Float)
 		case is String:
@@ -75,7 +77,65 @@ extension Int {
 		default: return nil
 		}
 	}
+	
+	var bool: Bool? {
+		guard self > -1, self < 2 else { return nil }
+		return self == 1
+	}
+}
 
+extension Int32 {
+	
+	init?(optional: Any?) {
+		guard let convertible = optional as? TypeConvertible else { return nil }
+		switch convertible {
+		case is Int: self.init(convertible.to() as Int32)
+		case is Int32: self.init(convertible.to() as Int32)
+		case is Int64: self.init(convertible.to() as Int32)
+		case is Double: self.init(convertible.to() as Double)
+		case is Float: self.init(convertible.to() as Float)
+		case is String:
+			let string = convertible.to() as String
+			if let double = Double(string) {
+				self.init(double)
+			} else if let float = Float(string) {
+				self.init(float)
+			} else {
+				self.init(string)
+			}
+		default: return nil
+		}
+	}
+	
+	var bool: Bool? {
+		guard self > -1, self < 2 else { return nil }
+		return self == 1
+	}
+}
+
+extension Int64 {
+	
+	init?(optional: Any?) {
+		guard let convertible = optional as? TypeConvertible else { return nil }
+		switch convertible {
+		case is Int: self.init(convertible.to() as Int64)
+		case is Int32: self.init(convertible.to() as Int64)
+		case is Int64: self.init(convertible.to() as Int64)
+		case is Double: self.init(convertible.to() as Double)
+		case is Float: self.init(convertible.to() as Float)
+		case is String:
+			let string = convertible.to() as String
+			if let double = Double(string) {
+				self.init(double)
+			} else if let float = Float(string) {
+				self.init(float)
+			} else {
+				self.init(string)
+			}
+		default: return nil
+		}
+	}
+	
 	var bool: Bool? {
 		guard self > -1, self < 2 else { return nil }
 		return self == 1
