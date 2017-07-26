@@ -38,12 +38,17 @@ public postfix func ^^ <T: Mappable>(_ value: Any?) throws -> T {
 	return try T.map(value)
 }
 
-// parser that throws
 postfix operator <<
 
 public postfix func << <T>(_ value: Any?) throws -> T {
 	guard let typed = value as? T else { throw MappableError.unableToParse(value) }
 	return typed
+}
+
+postfix operator <?
+
+public postfix func <? <T>(_ value: Any?) -> T? {
+	return value as? T
 }
 
 postfix operator |^
