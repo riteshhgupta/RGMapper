@@ -64,3 +64,24 @@ public postfix func |~ <T: Mappable>(_ value: Any?) -> [T] {
 	guard let list = value as? [[String: Any]] else { return [] }
 	return list.flatMap { try? T.map($0) }
 }
+
+// Operator will set passed value only if it exists, nil won't be set to property
+precedencegroup AssignValueIfExists {
+
+	associativity: left
+	higherThan: AdditionPrecedence
+}
+
+infix operator =? : AssignValueIfExists
+
+public func =? <T> (property: inout T?, newValue: T?) {
+	if let value = newValue {
+		property = value
+	}
+}
+
+public func =? <T> (property: inout T, newValue: T?) {
+	if let value = newValue {
+		property = value
+	}
+}
