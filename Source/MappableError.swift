@@ -27,9 +27,9 @@ extension MappableError: LocalizedError {
 	
 	public var errorDescription: String? {
 		switch self {
-		case .keyNotFound(let json): return "keyNotFound for \(json)"
-		case .typeMismatch(let json): return "typeMismatch for \(json)"
-		case .unableToParse(let json): return "unableToParse for \(json)"
+		case .keyNotFound(let json): return "keyNotFound for \(json ?? "")"
+		case .typeMismatch(let json): return "typeMismatch for \(json ?? "")"
+		case .unableToParse(let json): return "unableToParse for \(json ?? "")"
 		}
 	}
 }
