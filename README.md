@@ -9,12 +9,12 @@ To integrate RGMapper into your Xcode project using CocoaPods, specify it in you
 
 #### Swift 4.0
 ```
-  pod 'RGMapper', :git => 'https://github.com/riteshhgupta/RGMapper.git', :branch => 'swift4'
+  pod 'RGMapper', :git => 'https://github.com/riteshhgupta/RGMapper.git'
 ```
 
 #### Swift 3.1
 ```
-  pod 'RGMapper', :git => 'https://github.com/riteshhgupta/RGMapper.git'
+  pod 'RGMapper', :git => 'https://github.com/riteshhgupta/RGMapper.git', :branch => 'swift3'
 ```
 
 ## Example
