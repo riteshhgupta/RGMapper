@@ -15,14 +15,11 @@ struct User {
 }
 
 extension User: Mappable {
-	
-	static func map(_ value: Any?) throws -> User {
-		guard let json = value as? [String: Any] else {
-			throw MappableError.unableToParse("root type mismatch")
-		}
-		return try User(
-			name: json["name"]^^,
-			age: json["age"]^^
+
+	static func map(_ mapper: Mapper) throws -> User {
+		return User(
+			name: try mapper["human"]["person"]["name"]^^,
+			age: try mapper["age"]^^
 		)
 	}
 }
@@ -33,18 +30,14 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
-		let dict: [String: Any] = ["name": "Ritesh", "age": "25"]
+		let dict: [String: Any] = ["human": ["person": ["name": "Ritesh"]], "age": "25"]
 		do {
-			let user: User = try dict^^
+			let mapper = Mapper(dict)
+			let user: User = try mapper^^
 			print(user)
 		} catch {
 			print(error.localizedDescription)
 		}
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 }
 

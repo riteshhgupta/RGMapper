@@ -11,58 +11,45 @@ import Foundation
 // optional mapper
 postfix operator ^?
 
-public postfix func ^? <T: Mappable>(_ value: Any?) -> T? {
-	guard let mapped = try? T.map(value) else { return nil }
+public postfix func ^? <T: Mappable>(_ mapper: Mapper) -> T? {
+	guard mapper.error == nil, let mapped = try? T.map(mapper) else { return nil }
 	return mapped
 }
 
 // force unwrap mapper
 postfix operator ^!
 
-public postfix func ^! <T: Mappable>(_ value: Any?) -> T {
-	return try! T.map(value)
-}
-
-// default value mapper
-postfix operator ^~
-
-public postfix func ^~ <T: Mappable & Defaultable>(_ value: Any?) -> T {
-	guard let mapped: T = value^? else { return T.default }
-	return mapped
+public postfix func ^! <T: Mappable>(_ mapper: Mapper) -> T {
+	return try! T.map(mapper)
 }
 
 // parser that throws
 postfix operator ^^
 
-public postfix func ^^ <T: Mappable>(_ value: Any?) throws -> T {
-	return try T.map(value)
-}
-
-postfix operator <<
-
-public postfix func << <T>(_ value: Any?) throws -> T {
-	guard let typed = value as? T else { throw MappableError.unableToParse(value) }
-	return typed
-}
-
-postfix operator <?
-
-public postfix func <? <T>(_ value: Any?) -> T? {
-	return value as? T
+public postfix func ^^ <T: Mappable>(_ mapper: Mapper) throws -> T {
+	if let error = mapper.error {
+		throw error
+	} else {
+		return try T.map(mapper)
+	}
 }
 
 postfix operator |^
 
-public postfix func |^ <T: Mappable>(_ value: Any?) throws -> [T] {
-	guard let list = value as? [[String: Any]] else { throw MappableError.unableToParse(value) }
-	return try list.map { try T.map($0) }
+public postfix func |^ <T: Mappable>(_ mapper: Mapper) throws -> [T] {
+	if let error = mapper.error {
+		throw error
+	} else {
+		guard let list = mapper.value as? [Any] else { throw MappableError.unableToParse(mapper.value) }
+		return try list.map { try T.map(Mapper($0)) }
+	}
 }
 
 postfix operator |~
 
-public postfix func |~ <T: Mappable>(_ value: Any?) -> [T] {
-	guard let list = value as? [[String: Any]] else { return [] }
-	return list.compactMap { try? T.map($0) }
+public postfix func |~ <T: Mappable>(_ mapper: Mapper) -> [T] {
+	guard let list = mapper.value as? [Any] else { return [] }
+	return list.compactMap { try? T.map(Mapper($0)) }
 }
 
 // Operator will set passed value only if it exists, nil won't be set to property

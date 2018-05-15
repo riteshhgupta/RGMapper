@@ -10,26 +10,21 @@ import Foundation
 
 public enum MappableError: Error {
 	
-	case keyNotFound(Any?)
-	case typeMismatch(Any?)
+	case keyNotFound(String, Any?)
+	case typeMismatch(String, Any?)
 	case unableToParse(Any?)
-	
-	public var input: Any? {
-		switch self {
-		case .keyNotFound(let value): return value
-		case .typeMismatch(let value): return value
-		case .unableToParse(let value): return value
-		}
-	}
 }
 
 extension MappableError: LocalizedError {
 	
 	public var errorDescription: String? {
 		switch self {
-		case .keyNotFound(let json): return "keyNotFound for \(json ?? "")"
-		case .typeMismatch(let json): return "typeMismatch for \(json ?? "")"
-		case .unableToParse(let json): return "unableToParse for \(json ?? "")"
+		case .keyNotFound(let expectedKey, let value):
+			return "keyNotFound: \"\(expectedKey)\", received: \(value ?? "nil")"
+		case .typeMismatch(let expectedType, let value):
+			return "typeMismatch –– expected: \"\(expectedType)\", received: \(value ?? "nil")"
+		case .unableToParse(let json):
+			return "unableToParse: \(json ?? "")"
 		}
 	}
 }
