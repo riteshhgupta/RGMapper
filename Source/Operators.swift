@@ -41,7 +41,7 @@ public postfix func |^ <T: Mappable>(_ mapper: Mapper) throws -> [T] {
 		throw error
 	} else {
 		guard let list = mapper.value as? [Any] else { throw MappableError.unableToParse(mapper.value) }
-		return try list.map { try T.map(Mapper($0)) }
+		return try list.map { try T.map(Mapper($0, context: mapper.context)) }
 	}
 }
 
@@ -49,7 +49,7 @@ postfix operator |~
 
 public postfix func |~ <T: Mappable>(_ mapper: Mapper) -> [T] {
 	guard let list = mapper.value as? [Any] else { return [] }
-	return list.compactMap { try? T.map(Mapper($0)) }
+	return list.compactMap { try? T.map(Mapper($0, context: mapper.context)) }
 }
 
 // Operator will set passed value only if it exists, nil won't be set to property

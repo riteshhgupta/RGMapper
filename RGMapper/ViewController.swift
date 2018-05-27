@@ -8,6 +8,8 @@
 
 import UIKit
 
+struct UserContext: MapperContext {}
+
 struct User {
 	
 	let name: String
@@ -32,7 +34,8 @@ class ViewController: UIViewController {
 		
 		let dict: [String: Any] = ["human": ["person": ["name": "Ritesh"]], "age": "25"]
 		do {
-			let mapper = Mapper(dict)
+			let context = UserContext()
+			let mapper = Mapper(dict, context: context)
 			let user: User = try mapper^^
 			print(user)
 		} catch {

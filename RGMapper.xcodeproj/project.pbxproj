@@ -20,6 +20,7 @@
 		3D3430E11E4F87F200F1AA0D /* MappableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DB1E4F87F200F1AA0D /* MappableError.swift */; };
 		3D3430E21E4F87F200F1AA0D /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DC1E4F87F200F1AA0D /* Mappable.swift */; };
 		3D3430E31E4F87F200F1AA0D /* Foundation+MappableInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3430DD1E4F87F200F1AA0D /* Foundation+MappableInput.swift */; };
+		3D9FA19020BA8394005C78CA /* MapperContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9FA18F20BA8394005C78CA /* MapperContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3D3430DB1E4F87F200F1AA0D /* MappableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableError.swift; sourceTree = "<group>"; };
 		3D3430DC1E4F87F200F1AA0D /* Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		3D3430DD1E4F87F200F1AA0D /* Foundation+MappableInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+MappableInput.swift"; sourceTree = "<group>"; };
+		3D9FA18F20BA8394005C78CA /* MapperContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				3D3430DD1E4F87F200F1AA0D /* Foundation+MappableInput.swift */,
 				3D1E50BA20ABEBE5009851C0 /* MappableInput.swift */,
 				3D3430DC1E4F87F200F1AA0D /* Mappable.swift */,
+				3D9FA18F20BA8394005C78CA /* MapperContext.swift */,
 				3D1E50BC20ABEEA1009851C0 /* Foundation+Mappable.swift */,
 				3D3430DB1E4F87F200F1AA0D /* MappableError.swift */,
 				3D1E50B620AACD9E009851C0 /* Mapper.swift */,
@@ -179,6 +182,7 @@
 				3D3430E31E4F87F200F1AA0D /* Foundation+MappableInput.swift in Sources */,
 				3D1E50BF20ABEEBC009851C0 /* Result.swift in Sources */,
 				3D1E50BB20ABEBE5009851C0 /* MappableInput.swift in Sources */,
+				3D9FA19020BA8394005C78CA /* MapperContext.swift in Sources */,
 				3D1E50BD20ABEEA1009851C0 /* Foundation+Mappable.swift in Sources */,
 				3D3430DE1E4F87F200F1AA0D /* Operators.swift in Sources */,
 			);

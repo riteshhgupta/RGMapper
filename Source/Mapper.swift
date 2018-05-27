@@ -11,13 +11,16 @@ import Foundation
 public struct Mapper {
 
 	let result: Result
+	public let context: MapperContext?
 
-	public init(_ value: Any) {
+	public init(_ value: Any, context mapperContext: MapperContext? = nil) {
 		result = .value(value)
+		context = mapperContext
 	}
 
-	public init(_ error: MappableError) {
+	public init(_ error: MappableError, context mapperContext: MapperContext? = nil) {
 		result = .error(error)
+		context = mapperContext
 	}
 }
 
@@ -28,7 +31,7 @@ public extension Mapper {
 		case .value(let value):
 			return map(value: value, for: key)
 		case .error(let error):
-			return Mapper(error)
+			return Mapper(error, context: context)
 		}
 	}
 
@@ -54,12 +57,12 @@ extension Mapper {
 	func map(value: Any, for key: String) -> Mapper {
 		guard let dict = value as? [String: Any] else {
 			let error = MappableError.unableToParse(value)
-			return Mapper(error)
+			return Mapper(error, context: context)
 		}
 		guard let innerValue = dict[key] else {
 			let error = MappableError.keyNotFound(key, value)
-			return Mapper(error)
+			return Mapper(error, context: context)
 		}
-		return Mapper(innerValue)
+		return Mapper(innerValue, context: context)
 	}
 }
